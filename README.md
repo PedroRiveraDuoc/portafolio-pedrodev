@@ -52,15 +52,7 @@ portfolio.dev/
 └── package.json    # Dependencias y scripts
 ```
 
-## 📝 Licencia
-
-Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Por favor, abre un issue primero para discutir qué te gustaría cambiar.
-
 ## 📫 Contacto
 
-- GitHub: [@tu-usuario](https://github.com/tu-usuario)
-- LinkedIn: [Tu Nombre](https://linkedin.com/in/tu-perfil)
+- GitHub: [PedroRiveraDuoc](https://github.com/PedroRiveraDuoc)
+- LinkedIn: [Pedro Rivera Lobos](https://www.linkedin.com/in/pedro-rivera-lobos/)
