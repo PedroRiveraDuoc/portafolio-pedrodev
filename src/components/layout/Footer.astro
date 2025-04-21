@@ -1,0 +1,75 @@
+---
+import CopyIcon from "@/components/icons/CopyIcon.astro";
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="w-full border-t border-gray-100 dark:border-gray-800">
+  <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+    <div class="flex justify-center space-x-6 md:order-2">
+      <div class="flex items-center gap-2">
+        <span class="text-sm text-gray-600 dark:text-gray-400"><strong>Correo:</strong> pedroriveralobos.93@gmail.com</span>
+        <button
+          id="copy-email-button"
+          type="button"
+          class="inline-flex items-center gap-1.5 justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-all duration-200"
+          aria-label="Copiar correo electrónico"
+        >
+          <CopyIcon class="w-4 h-4" />
+          <span id="copy-text" class="text-sm">Copiar</span>
+        </button>
+      </div>
+    </div>
+    <div class="mt-4 md:order-1 md:mt-0">
+      <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+        © {currentYear} Pedro Rivera
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('copy-email-button');
+    const copyText = document.getElementById('copy-text');
+    const email = 'pedroriveralobos.93@gmail.com';
+
+    if (!button || !copyText) {
+      console.error('No se encontraron los elementos necesarios para la funcionalidad de copiar');
+      return;
+    }
+
+    const showCopiedState = () => {
+      copyText.textContent = 'Copiado';
+      button.classList.remove('bg-blue-600', 'hover:bg-blue-500');
+      button.classList.add('bg-green-600', 'hover:bg-green-500');
+    };
+
+    const resetButtonState = () => {
+      copyText.textContent = 'Copiar';
+      button.classList.remove('bg-green-600', 'hover:bg-green-500');
+      button.classList.add('bg-blue-600', 'hover:bg-blue-500');
+    };
+
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(email);
+        showCopiedState();
+        setTimeout(resetButtonState, 2000);
+      } catch (err) {
+        console.error('Error al copiar al portapapeles:', err);
+        const textArea = document.createElement('textarea');
+        textArea.value = email;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          showCopiedState();
+          setTimeout(resetButtonState, 2000);
+        } catch (fallbackErr) {
+          console.error('Error en el fallback de copiado:', fallbackErr);
+        }
+        document.body.removeChild(textArea);
+      }
+    });
+  });
+</script>

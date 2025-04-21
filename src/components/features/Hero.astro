@@ -1,0 +1,62 @@
+---
+const personalImageAlt = "Pedro Rivera";
+import LinkedInIcon from "@/components/icons/LinkedIn.astro";
+import MailIcon from "@/components/icons/Mail.astro";
+---
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+<div class="relative flex flex-col items-center justify-center py-24 text-center gap-6 max-w-3xl mx-auto px-4">
+  <img
+    class="w-32 h-32 rounded-full object-top object-cover shadow-lg bg-white"
+    src="/me.webp"
+    alt={personalImageAlt}
+  />
+
+  <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-800 dark:text-white mt-4 font-sans">
+    Soy Pedro.
+  </h1>
+  
+  <h2 class="text-xl md:text-2xl font-semibold text-gray-800 dark:text-white font-sans">
+    Fullstack Developer.
+  </h2>
+  
+  <p class="text-sm md:text-base font-normal text-black dark:text-gray-400 max-w-xl font-sans">
+    +3 años de experiencia en TI, enfocado en el aprendizaje continuo y la mejora de tecnologías como Java, Spring, Angular, TypeScript, GCP, AWS, Azure, SQL y Git.
+  </p>
+
+  <div class="flex flex-wrap justify-center gap-4 mt-2">
+    <a
+      href="https://linkedin.com/in/pedro-rivera-lobos"
+      class="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-medium text-white bg-gray-900 dark:bg-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors"
+    >
+      <LinkedInIcon class="size-5" />
+      LinkedIn
+    </a>
+  
+    <a
+      href="mailto:tu-email@ejemplo.com"
+      class="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-medium text-white bg-gray-900 dark:bg-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors"
+    >
+      <MailIcon class="size-5" />
+      Contáctame
+    </a>
+  </div>
+
+  <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+    <div class="animate-bounce">
+      <svg 
+        class="w-6 h-6 text-gray-600 dark:text-gray-300"
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+      >
+        <path 
+          stroke-linecap="round" 
+          stroke-linejoin="round" 
+          stroke-width="2" 
+          d="M19 14l-7 7m0 0l-7-7m7 7V3"
+        />
+      </svg>
+    </div>
+  </div>
+</div>

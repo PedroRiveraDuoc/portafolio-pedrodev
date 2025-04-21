@@ -1,0 +1,166 @@
+---
+import "@fontsource-variable/onest";
+
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import { ViewTransitions } from "astro:transitions";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { description, title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+
+    <script is:inline>
+      // Código para manejar el tema inicialmente y evitar parpadeo
+      const getThemePreference = () => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      };
+
+      const theme = getThemePreference();
+
+      document.documentElement.classList[
+        theme === "dark" ||
+        (theme === "system" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+          ? "add"
+          : "remove"
+      ]("dark");
+
+      document.documentElement.setAttribute("data-theme", theme);
+
+      window.localStorage.setItem("theme", theme);
+    </script>
+  </head>
+
+  <body class="relative text-black dark:text-white">
+    <!-- Fondo de la página 
+         <div
+      class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-50 dark:bg-gray-950
+      bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
+      dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+    >
+     -->
+    <div
+      class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-50 dark:bg-black
+bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(100,100,100,0.3),rgba(255,255,255,0.9))]
+dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_20%,rgba(22,22,23,0.3),#1d1d1f)]"
+    >
+    </div>
+    <Header />
+    <slot />
+    <Footer />
+    <style is:global>
+      :root {
+        color-scheme: light dark;
+      }
+
+      /* 🎨 Selección de texto personalizada */
+      ::selection {
+        background-color: #d1d5db;
+        color: #111827;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        ::selection {
+          background-color: #374151;
+          color: #f9fafb;
+        }
+      }
+
+      html {
+        font-family: "Onest Variable", system-ui, sans-serif;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        width: 100%;
+      }
+
+      body {
+        color: rgba(17, 17, 17, 0.9);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        overscroll-behavior: none;
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+      }
+
+      .dark body {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      #header-nav {
+        animation: blur linear both 0.5s;
+        animation-timeline: scroll();
+        animation-range: 0 500px;
+      }
+
+      @keyframes blur {
+        to {
+          backdrop-filter: blur(20px);
+          border-width: 1px;
+          border-color: rgba(0, 0, 0);
+          padding: 0.25rem 0.75rem;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          background-color: rgb(229, 229, 229);
+          border-radius: 9999px;
+        }
+      }
+
+      @keyframes blur-dark {
+        from {
+          border: 0px;
+        }
+        to {
+          box-shadow:
+            0px 5px 50px -5px rgba(0, 0, 0, 0.1),
+            0px 0px 0 1px rgba(0, 0, 0, 0.3);
+          background: rgba(0, 0, 0, 0.3);
+          backdrop-filter: blur(20px);
+          border-width: 1px;
+          border-color: rgba(0, 0, 0);
+          padding: 0.25rem 0.75rem;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          background-color: rgba(0, 0, 0, 0.3);
+          border-radius: 9999px;
+        }
+      }
+
+      .dark #header-nav {
+        animation-name: blur-dark;
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+---
+import Layout from "@/layouts/Layout.astro"
+
+import AboutMe from "@/components/features/AboutMe.astro"
+import Briefcase from "@/components/icons/Briefcase.astro"
+import CodeIcon from "@/components/icons/Code.astro"
+import Experience from "@/components/features/Experience.astro"
+import ProfileCheck from "@/components/icons/ProfileCheck.astro"
+import Projects from "@/components/features/Projects.astro"
+import SectionContainer from "@/components/layout/SectionContainer.astro"
+import Hero from "@/components/features/Hero.astro"
+import TitleSection from "@/components/common/TitleSection.astro"
+import Education from "@/components/features/Education.astro"
+import GraduationIcon from "@/components/icons/Graduation.astro"
+---
+
+<Layout
+  title="Portfolio de Pedro Rivera - Ingeniero en Desarrollo de Software"
+  description="Desarrollador web especializado en Java, Angular y Spring Boot. Con experiencia en desarrollo de aplicaciones empresariales y cloud computing."
+>
+  <main class="px-4 sm:px-6 lg:px-8">
+    <SectionContainer class="py-8 sm:py-16 md:py-24">
+      <Hero>
+      </slot>
+    </Hero>
+    </SectionContainer>
+    <div class="space-y-16 sm:space-y-24">
+    <SectionContainer id="experiencia">
+      <TitleSection>
+        <Briefcase class="size-7" />
+        Experiencia laboral
+      </TitleSection>
+      <Experience />
+    </SectionContainer>
+
+    <SectionContainer id="educacion">
+      <TitleSection>
+        <GraduationIcon class="size-7" />
+        Formación Académica
+      </TitleSection>
+      <Education />
+    </SectionContainer>
+
+    <SectionContainer id="proyectos">
+      <TitleSection>
+        <CodeIcon class="size-7" />
+        Proyectos
+      </TitleSection>
+      <Projects />
+    </SectionContainer>
+
+    <SectionContainer id="sobre-mi">
+      <TitleSection>
+        <ProfileCheck class="size-7" />
+        Sobre mí
+      </TitleSection>
+      <AboutMe />
+    </SectionContainer>
+  </div>
+  </main>
+</Layout>

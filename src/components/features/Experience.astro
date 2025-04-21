@@ -1,0 +1,41 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+import Link from "@/components/icons/Link.astro";
+const EXPERIENCE = [
+  {
+    date: "Noviembre 2021 - Enero 2025",
+    title: "Desarrollador",
+    company: "RedSalud",
+    description: [
+      "Implementación de la Continuidad Operacional en GCP-SAP, utilizando Java para la generación y procesamiento de archivos de datos de proveedores.",
+      "Gestión de almacenamiento y operaciones en GCP.",
+      "Integración de datos contables y operacionales en SAP desde fuentes externas, facilitando la disponibilidad para analistas contables.",
+      "Administración de bases de datos en PostgreSQL y Oracle.",
+      "Automatización de tareas clave, parametrizando funciones y jobs para agilizar y administrar flujos de trabajo.",
+      "Reconocimiento por 'Actitud Positiva' en la relación con usuarios y colaboradores, aceleración de tiempos de respuesta, mejorando la satisfacción y eficiencia del equipo.",
+    ],
+  },
+  {
+    date: "2021 - 2023",
+    title: "Desarrollador Junior",
+    company: "ABENIS CONSULTORES",
+    description: [
+      "Apoyo en el desarrollo e implementación de soluciones para la integración de datos en entornos GCP y SAP.",
+      "Participación en la automatización de procesos mediante scripts en Java y herramientas de gestión de datos.",
+      "Manejo inicial de bases de datos PostgreSQL y Oracle para consultas y soporte en la administración de datos.",
+      "Colaboración con el equipo de desarrollo en tareas de mantenimiento y mejora de flujos de trabajo.",
+      "Desarrollo de habilidades técnicas y de comunicación trabajando en conjunto con analistas y usuarios finales.",
+    ],
+  },
+];
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>

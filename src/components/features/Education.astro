@@ -1,0 +1,37 @@
+---
+import EducationItem from "./EducationItem.astro";
+
+const EDUCATION = [
+  {
+    date: "2025",
+    title: "Ingeniero en Desarrollo de Software",
+    company: "Duoc UC",
+    description: [
+      "Desarrollo de aplicaciones web y móviles",
+      "Gestión de bases de datos y sistemas de información",
+      "Arquitectura de software y patrones de diseño",
+      "Metodologías ágiles y gestión de proyectos"
+    ]
+  },
+  {
+    date: "2021 - 2023",
+    title: "Analista Programador Computacional",
+    company: "Duoc UC",
+  },
+  {
+    date: "2014-2019",
+    title: "Ingeniero en Mecánica automotriz y autotrónica",
+    company: "Duoc UC",
+  }
+];
+---
+
+<ol class="relative mt-16">
+  {
+    EDUCATION.map((education) => (
+      <li class="">
+        <EducationItem {...education} />
+      </li>
+    ))
+  }
+</ol>
