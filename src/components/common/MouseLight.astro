@@ -1,0 +1,48 @@
+<div id="mouse-light" class="fixed pointer-events-none z-50"></div>
+
+<script>
+  const mouseLight = document.getElementById('mouse-light');
+  
+  if (mouseLight) {
+    const updateLightStyle = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      
+      mouseLight.style.width = '1000px';
+      mouseLight.style.height = '1000px';
+      mouseLight.style.borderRadius = '50%';
+      mouseLight.style.transition = 'transform 0.1s ease-out, background 0.3s ease-out';
+
+      if (isDark) {
+        mouseLight.style.background = 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)';
+        mouseLight.style.mixBlendMode = 'screen';
+      } else {
+        mouseLight.style.background = 'radial-gradient(circle, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0) 70%)';
+        mouseLight.style.mixBlendMode = 'multiply';
+      }
+
+      mouseLight.style.transform = 'translate(-50%, -50%)';
+    };
+
+    // Estilo inicial
+    updateLightStyle();
+
+    // Detectar cambio de modo (dark <-> light)
+    const observer = new MutationObserver(updateLightStyle);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    // Seguir el mouse
+    document.addEventListener('mousemove', (e) => {
+      mouseLight.style.left = `${e.clientX}px`;
+      mouseLight.style.top = `${e.clientY}px`;
+    });
+  }
+</script>
+
+<style>
+  #mouse-light {
+    will-change: transform;
+  }
+</style>
