@@ -3,7 +3,7 @@ import "@fontsource-variable/onest";
 
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
-import MouseLight from "../components/common/MouseLight.astro";
+import MouseLight from "src/components/common/MouseLight.astro";
 import { ViewTransitions } from "astro:transitions";
 
 interface Props {
@@ -73,6 +73,15 @@ dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_20%,rgba(22,22,23,0.3),#1d1d1f)]
     <Header />
     <slot />
     <Footer />
+    <script>
+      import AOS from 'aos';
+      import 'aos/dist/aos.css';
+
+      AOS.init({
+        duration: 1000,
+        once: true
+      });
+    </script>
     <style is:global>
       :root {
         color-scheme: light dark;
