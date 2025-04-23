@@ -12,6 +12,7 @@ import Hero from "@/components/features/Hero.astro"
 import TitleSection from "@/components/common/TitleSection.astro"
 import Education from "@/components/features/Education.astro"
 import GraduationIcon from "@/components/icons/Graduation.astro"
+import Skills from "@/components/features/Skills.astro"
 ---
 
 <Layout
@@ -33,31 +34,39 @@ import GraduationIcon from "@/components/icons/Graduation.astro"
         </TitleSection>
         <AboutMe />
       </SectionContainer>
+
+      <SectionContainer id="habilidades">
+        <TitleSection>
+          <CodeIcon class="size-7" />
+          Habilidades
+        </TitleSection>
+        <Skills />
+      </SectionContainer>
       
-    <SectionContainer id="experiencia">
-      <TitleSection>
-        <Briefcase class="size-7" />
-        Experiencia laboral
-      </TitleSection>
-      <Experience />
-    </SectionContainer>
+      <SectionContainer id="experiencia">
+        <TitleSection>
+          <Briefcase class="size-7" />
+          Experiencia laboral
+        </TitleSection>
+        <Experience />
+      </SectionContainer>
 
-    <SectionContainer id="educacion">
-      <TitleSection>
-        <GraduationIcon class="size-7" />
-        Formación Académica
-      </TitleSection>
-      <Education />
-    </SectionContainer>
+      <SectionContainer id="educacion">
+        <TitleSection>
+          <GraduationIcon class="size-7" />
+          Formación Académica
+        </TitleSection>
+        <Education />
+      </SectionContainer>
 
-    <SectionContainer id="proyectos">
-      <TitleSection>
-        <CodeIcon class="size-7" />
-        Proyectos
-      </TitleSection>
-      <Projects />
-    </SectionContainer>
+      <SectionContainer id="proyectos">
+        <TitleSection>
+          <CodeIcon class="size-7" />
+          Proyectos
+        </TitleSection>
+        <Projects />
+      </SectionContainer>
 
-  </div>
+    </div>
   </main>
 </Layout>

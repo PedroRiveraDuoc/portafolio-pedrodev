@@ -1,0 +1,115 @@
+---
+// Importar los iconos disponibles
+import Angular from "@/components/icons/Angular.astro";
+import AWS from "@/components/icons/AWS.astro";
+import Azure from "@/components/icons/Azure.astro";
+import Bootstrap from "@/components/icons/Bootstrap.astro";
+import CSS3 from "@/components/icons/CSS3.astro";
+import GCP from "@/components/icons/GCP.astro";
+import HTML from "@/components/icons/HTML.astro";
+import Java from "@/components/icons/Java.astro";
+import JavaScript from "@/components/icons/JavaScript.astro";
+import Oracle from "@/components/icons/Oracle.astro";
+import PostgreSQL from "@/components/icons/PostgreSQL.astro";
+import React from "@/components/icons/React.astro";
+import Spring from "@/components/icons/Spring.astro";
+import Tailwind from "@/components/icons/Tailwind.astro";
+import TypeScript from "@/components/icons/TypeScript.astro";
+import AstroIcon from "@/components/icons/AstroIcon.astro";
+
+const SKILLS = {
+  "Frontend": [
+    { name: "HTML", icon: HTML },
+    { name: "CSS", icon: CSS3 },
+    { name: "JavaScript", icon: JavaScript },
+    { name: "TypeScript", icon: TypeScript },
+    { name: "Bootstrap", icon: Bootstrap },
+    { name: "Tailwind", icon: Tailwind },
+    { name: "Angular", icon: Angular },
+    { name: "React", icon: React },
+    { name: "Astro", icon: AstroIcon }
+  ],
+  "Backend": [
+    { name: "Java", icon: Java },
+    { name: "Spring", icon: Spring }
+  ],
+  "Bases de Datos": [
+    { name: "PostgreSQL", icon: PostgreSQL },
+    { name: "Oracle SQL", icon: Oracle }
+  ],
+  "Cloud": [
+    { name: "Amazon Web Services", icon: AWS },
+    { name: "Azure", icon: Azure },
+    { name: "Google Cloud Platform", icon: GCP }
+  ]
+};
+---
+
+<div class="skills-grid grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+  {
+    Object.entries(SKILLS).map(([category, skills]) => (
+      <div class="bg-white/50 dark:bg-[#121a2e] p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 backdrop-blur-sm">
+        <h3 class="text-xl font-bold text-blue-600 dark:text-blue-400 mb-6">{category}</h3>
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {
+            skills.map((skill) => (
+              <div class="skill-item flex flex-col items-center gap-2 group transition-all duration-300 hover:scale-110">
+                <div class="w-12 h-12 flex items-center justify-center skill-icon-container">
+                  <skill.icon />
+                </div>
+                <div class="flex flex-col items-center">
+                  <span class="text-xs text-gray-600 dark:text-gray-400 font-medium text-center">{skill.name}</span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  :global(svg) {
+    width: auto !important;
+    height: auto !important;
+    max-width: 2rem !important;
+    max-height: 2rem !important;
+  }
+</style>
+
+<script>
+  // Función para cambiar el color de los iconos en modo oscuro
+  const updateSkillIcons = () => {
+    const isDark = document.documentElement.classList.contains('dark');
+    const skillIcons = document.querySelectorAll('.skill-item svg');
+    
+    skillIcons.forEach(icon => {
+      // Selecciona todos los elementos que pueden tener color en un SVG
+      const elements = icon.querySelectorAll('path, rect, circle, polygon, ellipse');
+      
+      elements.forEach(el => {
+        if (isDark) {
+          el.setAttribute('style', 'fill: white !important');
+        } else {
+          el.setAttribute('style', '');
+        }
+      });
+    });
+  };
+
+  // Ejecutar al cargar la página
+  document.addEventListener('astro:page-load', () => {
+    updateSkillIcons();
+    
+    // Observar cambios en la clase 'dark' del documento
+    const observer = new MutationObserver(() => {
+      updateSkillIcons();
+    });
+    
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  });
+</script> 
