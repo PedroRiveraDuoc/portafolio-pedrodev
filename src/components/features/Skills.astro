@@ -45,7 +45,9 @@ const SKILLS = {
 };
 ---
 
-<div class="skills-grid grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+<div class="skills-grid grid grid-cols-1 md:grid-cols-2 gap-8 mt-8"
+data-aos="fade-up"
+>
   {
     Object.entries(SKILLS).map(([category, skills]) => (
       <div class="bg-white/50 dark:bg-[#121a2e] p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 backdrop-blur-sm">
